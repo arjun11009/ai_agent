@@ -1,0 +1,28 @@
+[W515 17:24:21.993584041 socket.cpp:755] [c10d] The client socket cannot be initialized to connect to [localhost]:29500 (errno: 97 - Address family not supported by protocol).
+STREAM LOGGER ADDED
+INFO:     Started server process [127729]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+15-05-2025 17:24:32 - INFO - llm_api - line : 26 - (routes.llm_api) [llm_model_func] input data : {'service_provider': 'openai', 'model_name': 'o4-mini', 'message': [{'role': 'user', 'content': 'What is the framewrok for Gen ai'}], 'output_format': 'text', 'temperature': 0.9, 'max_output_token': 100, 'top_p': 0.9} 
+
+INFO:logger:(routes.llm_api) [llm_model_func] input data : {'service_provider': 'openai', 'model_name': 'o4-mini', 'message': [{'role': 'user', 'content': 'What is the framewrok for Gen ai'}], 'output_format': 'text', 'temperature': 0.9, 'max_output_token': 100, 'top_p': 0.9}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+15-05-2025 17:24:34 - INFO - utils - line : 80 - (openai_services) [openai_chat_llm_service]  openai_response : Response(id='resp_6825d5f90bf081919ac42d3a6e504ef60bfb98450af38d18', created_at=1747310073.0, error=None, incomplete_details=IncompleteDetails(reason='max_output_tokens'), instructions=None, metadata={}, model='o4-mini-2025-04-16', object='response', output=[ResponseReasoningItem(id='rs_6825d5f9861081918a5309d01d1b2ee50bfb98450af38d18', summary=[], type='reasoning', encrypted_content=None, status=None)], parallel_tool_calls=True, temperature=1.0, tool_choice='auto', tools=[], top_p=1.0, max_output_tokens=100, previous_response_id=None, reasoning=Reasoning(effort='medium', generate_summary=None, summary=None), service_tier='default', status='incomplete', text=ResponseTextConfig(format=ResponseFormatText(type='text')), truncation='disabled', usage=ResponseUsage(input_tokens=15, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=64, output_tokens_details=OutputTokensDetails(reasoning_tokens=64), total_tokens=79), user=None, store=True) 
+
+INFO:logger:(openai_services) [openai_chat_llm_service]  openai_response : Response(id='resp_6825d5f90bf081919ac42d3a6e504ef60bfb98450af38d18', created_at=1747310073.0, error=None, incomplete_details=IncompleteDetails(reason='max_output_tokens'), instructions=None, metadata={}, model='o4-mini-2025-04-16', object='response', output=[ResponseReasoningItem(id='rs_6825d5f9861081918a5309d01d1b2ee50bfb98450af38d18', summary=[], type='reasoning', encrypted_content=None, status=None)], parallel_tool_calls=True, temperature=1.0, tool_choice='auto', tools=[], top_p=1.0, max_output_tokens=100, previous_response_id=None, reasoning=Reasoning(effort='medium', generate_summary=None, summary=None), service_tier='default', status='incomplete', text=ResponseTextConfig(format=ResponseFormatText(type='text')), truncation='disabled', usage=ResponseUsage(input_tokens=15, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=64, output_tokens_details=OutputTokensDetails(reasoning_tokens=64), total_tokens=79), user=None, store=True)
+15-05-2025 17:24:34 - ERROR - utils - line : 138 - (openai_services) [openai_chat_llm_service] error : Traceback (most recent call last):
+  File "/home/marktine/Desktop/AI_Layer/routes/utils.py", line 85, in openai_chat_llm_service
+    raise Exception("No output message found in response.")
+Exception: No output message found in response.
+ 
+
+ERROR:logger:(openai_services) [openai_chat_llm_service] error : Traceback (most recent call last):
+  File "/home/marktine/Desktop/AI_Layer/routes/utils.py", line 85, in openai_chat_llm_service
+    raise Exception("No output message found in response.")
+Exception: No output message found in response.
+
+15-05-2025 17:24:34 - INFO - llm_api - line : 39 - openai_response : {'success': False, 'error': 'Traceback (most recent call last):\n  File "/home/marktine/Desktop/AI_Layer/routes/utils.py", line 85, in openai_chat_llm_service\n    raise Exception("No output message found in response.")\nException: No output message found in response.\n'} 
+
+INFO:logger:openai_response : {'success': False, 'error': 'Traceback (most recent call last):\n  File "/home/marktine/Desktop/AI_Layer/routes/utils.py", line 85, in openai_chat_llm_service\n    raise Exception("No output message found in response.")\nException: No output message found in response.\n'}
+INFO:     127.0.0.1:41382 - "POST /llm_model/ HTTP/1.1" 500 Internal Server Error
